@@ -61,7 +61,19 @@ body {
   width: 100%;
   height: 100%;
   filter: blur(0.1vmin);
-  background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00bfff, #ff66cc);
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 25%, #2a1f3d 50%, #1f2a45 75%, #0a1628 100%);
+  background-attachment: fixed;
+}
+
+.night::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 182, 193, 0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .flowers {
@@ -280,38 +292,14 @@ body {
 .flower__light:nth-child(odd) {
   background-color: #23f0ff;
 }
-.flower__light--1 {
-  left: -2vmin;
-  animation-delay: 1s;
-}
-.flower__light--2 {
-  left: 3vmin;
-  animation-delay: 0.5s;
-}
-.flower__light--3 {
-  left: -6vmin;
-  animation-delay: 0.3s;
-}
-.flower__light--4 {
-  left: 6vmin;
-  animation-delay: 0.9s;
-}
-.flower__light--5 {
-  left: -1vmin;
-  animation-delay: 1.5s;
-}
-.flower__light--6 {
-  left: -4vmin;
-  animation-delay: 3s;
-}
-.flower__light--7 {
-  left: 3vmin;
-  animation-delay: 2s;
-}
-.flower__light--8 {
-  left: -6vmin;
-  animation-delay: 3.5s;
-}
+.flower__light--1 { left: -2vmin; animation-delay: 1s; }
+.flower__light--2 { left: 3vmin; animation-delay: 0.5s; }
+.flower__light--3 { left: -6vmin; animation-delay: 0.3s; }
+.flower__light--4 { left: 6vmin; animation-delay: 0.9s; }
+.flower__light--5 { left: -1vmin; animation-delay: 1.5s; }
+.flower__light--6 { left: -4vmin; animation-delay: 3s; }
+.flower__light--7 { left: 3vmin; animation-delay: 2s; }
+.flower__light--8 { left: -6vmin; animation-delay: 3.5s; }
 .flower__grass {
   --c: #159faa;
   --line-w: 1.5vmin;
@@ -1018,6 +1006,133 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
   animation-play-state: paused !important;
 }
 
+/* floating hearts background styles */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  filter: drop-shadow(0 0 8px rgba(255, 102, 204, 0.4));
+  animation: float-heart linear infinite;
+}
+
+/* varied durations and delays for natural movement */
+.heart--1 {
+  top: 10%;
+  left: 5%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+
+.heart--2 {
+  top: 15%;
+  left: 15%;
+  animation-duration: 10s;
+  animation-delay: 1s;
+  opacity: 0.25;
+}
+
+.heart--3 {
+  top: 20%;
+  left: 25%;
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+.heart--4 {
+  top: 5%;
+  left: 35%;
+  animation-duration: 9s;
+  animation-delay: 0.5s;
+  opacity: 0.28;
+}
+
+.heart--5 {
+  top: 25%;
+  left: 45%;
+  animation-duration: 11s;
+  animation-delay: 1.5s;
+}
+
+.heart--6 {
+  top: 10%;
+  left: 60%;
+  animation-duration: 13s;
+  animation-delay: 2.5s;
+  opacity: 0.22;
+}
+
+.heart--7 {
+  top: 30%;
+  left: 70%;
+  animation-duration: 10s;
+  animation-delay: 0.8s;
+}
+
+.heart--8 {
+  top: 8%;
+  left: 80%;
+  animation-duration: 12s;
+  animation-delay: 1.2s;
+  opacity: 0.26;
+}
+
+.heart--9 {
+  top: 35%;
+  left: 90%;
+  animation-duration: 9s;
+  animation-delay: 2s;
+}
+
+.heart--10 {
+  top: 40%;
+  left: 12%;
+  animation-duration: 11s;
+  animation-delay: 1.5s;
+  opacity: 0.24;
+}
+
+.heart--11 {
+  top: 50%;
+  left: 50%;
+  animation-duration: 10s;
+  animation-delay: 0.5s;
+}
+
+.heart--12 {
+  top: 45%;
+  left: 85%;
+  animation-duration: 13s;
+  animation-delay: 2.2s;
+  opacity: 0.27;
+}
+
+@keyframes float-heart {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(30px) scale(1);
+    opacity: 0;
+  }
+}
+
 /* message card overlay styles */
 .message-card-overlay {
   position: fixed;
@@ -1042,14 +1157,17 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
   background: linear-gradient(135deg, #00bfff 0%, #ff66cc 100%);
   padding: 2rem;
   border-radius: 12px;
+  width: 90%;
   max-width: 600px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   line-height: 1.5;
   position: relative;
   text-align: left;
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
   border: 2px solid #ff66cc;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 .close-btn {
   position: absolute;
